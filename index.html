@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudyPilot AI | Smart Study Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ✦
+        </div>
+
+        <div>
+            <div class="brand-name">StudyPilot</div>
+            <div class="brand-subtitle">AI Study Planner</div>
+        </div>
+
+    </div>
+
+
+    <div class="nav-status">
+
+        <span class="status-dot"></span>
+
+        AI Ready
+
+    </div>
+
+</nav>
+
+
+
+<!-- MAIN -->
+
+<main class="main-container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <div class="eyebrow">
+                ✨ PERSONALIZED LEARNING
+            </div>
+
+            <h1>
+                Study smarter.<br>
+                <span>Not harder.</span>
+            </h1>
+
+            <p>
+                Tell us what you're studying, when your exams are,
+                and how much time you have. Our AI creates a
+                realistic study plan built around you.
+            </p>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="mini-card-top">
+
+                <span>AI Planning</span>
+
+                <span class="live-badge">
+                    ● LIVE
+                </span>
+
+            </div>
+
+
+            <div class="mini-calendar">
+
+                <div class="calendar-day">
+                    <small>MON</small>
+                    <strong>12</strong>
+                </div>
+
+                <div class="calendar-day active">
+                    <small>TUE</small>
+                    <strong>13</strong>
+                </div>
+
+                <div class="calendar-day">
+                    <small>WED</small>
+                    <strong>14</strong>
+                </div>
+
+                <div class="calendar-day">
+                    <small>THU</small>
+                    <strong>15</strong>
+                </div>
+
+                <div class="calendar-day">
+                    <small>FRI</small>
+                    <strong>16</strong>
+                </div>
+
+            </div>
+
+
+            <div class="mini-task">
+
+                <div class="task-icon">DS</div>
+
+                <div class="task-info">
+
+                    <strong>Data Structures</strong>
+
+                    <span>Practice • 90 min</span>
+
+                </div>
+
+                <span class="check">✓</span>
+
+            </div>
+
+
+            <div class="mini-task">
+
+                <div class="task-icon purple">DB</div>
+
+                <div class="task-info">
+
+                    <strong>Database Systems</strong>
+
+                    <span>Revision • 60 min</span>
+
+                </div>
+
+                <span class="check">✓</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PLANNER -->
+
+    <section class="planner-section">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    CREATE YOUR PLAN
+                </span>
+
+                <h2>
+                    Tell us about your exams
+                </h2>
+
+            </div>
+
+            <div class="secure-note">
+                🔒 Your data stays on your device
+            </div>
+
+        </div>
+
+
+
+        <div class="planner-grid">
+
+
+            <!-- FORM -->
+
+            <div class="planner-card">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Subjects
+                    </label>
+
+                    <span class="label-hint">
+                        Add every subject you need to prepare
+                    </span>
+
+
+                    <textarea
+                        id="subjects"
+                        placeholder="Example:
+
+Data Structures
+Database Management Systems
+Operating Systems
+Computer Networks
+Artificial Intelligence"></textarea>
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Exam date
+                        </label>
+
+                        <span class="label-hint">
+                            When is your first exam?
+                        </span>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">📅</span>
+
+                            <input
+                                type="date"
+                                id="exam_date">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Daily study time
+                        </label>
+
+                        <span class="label-hint">
+                            How many hours can you study?
+                        </span>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">⏱</span>
+
+                            <input
+                                type="number"
+                                id="hours"
+                                min="1"
+                                max="16"
+                                placeholder="5">
+
+                            <span class="input-suffix">
+                                hrs/day
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <button
+                    class="generate-button"
+                    onclick="generatePlan()">
+
+                    <span>✨</span>
+
+                    Generate My Study Plan
+
+                    <span class="button-arrow">→</span>
+
+                </button>
+
+
+                <div class="form-note">
+
+                    Powered by local AI • No API key required
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INFO CARD -->
+
+            <div class="info-card">
+
+
+                <div class="info-icon">
+                    🧠
+                </div>
+
+
+                <h3>
+                    Your plan is personalized
+                </h3>
+
+
+                <p>
+                    StudyPilot considers your available time,
+                    subjects and exam date to create a practical
+                    schedule.
+                </p>
+
+
+                <div class="feature">
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>Balanced workload</strong>
+                        <small>Avoid overwhelming study sessions</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>Built-in revision</strong>
+                        <small>Review important topics before exams</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>Practice sessions</strong>
+                        <small>Time for problems and self-testing</small>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- LOADING -->
+
+    <div id="loading" class="loading-card">
+
+        <div class="loader"></div>
+
+        <div>
+
+            <strong>
+                Building your study plan...
+            </strong>
+
+            <span>
+                AI is balancing your subjects and revision time
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RESULT -->
+
+    <section
+        id="result"
+        class="result-section">
+
+
+        <div class="result-header">
+
+            <div>
+
+                <span class="section-label">
+                    YOUR PERSONALIZED PLAN
+                </span>
+
+                <h2>
+                    Your Study Roadmap
+                </h2>
+
+            </div>
+
+
+            <button
+                class="new-plan-button"
+                onclick="window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                })">
+
+                + New Plan
+
+            </button>
+
+        </div>
+
+
+
+        <div class="result-card">
+
+            <div
+                id="plan"
+                class="plan-content">
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<footer>
+
+    <div>
+        © 2026 StudyPilot
+    </div>
+
+    <div>
+        Built with Flask + Ollama + Llama 3.2
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+async function generatePlan() {
+
+
+    const subjects =
+        document.getElementById("subjects").value.trim();
+
+
+    const examDate =
+        document.getElementById("exam_date").value;
+
+
+    const hours =
+        document.getElementById("hours").value;
+
+
+
+    if (!subjects || !examDate || !hours) {
+
+        alert("Please complete all fields before generating your plan.");
+
+        return;
+
+    }
+
+
+
+    document.getElementById("loading").style.display =
+        "flex";
+
+
+    document.getElementById("result").style.display =
+        "none";
+
+
+
+    try {
+
+
+        const response = await fetch(
+            "/generate-plan",
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    subjects: subjects,
+
+                    exam_date: examDate,
+
+                    hours: hours
+
+                })
+
+            }
+        );
+
+
+
+        const data = await response.json();
+
+
+
+        if (data.error) {
+
+            alert(data.error);
+
+            return;
+
+        }
+
+
+
+        document.getElementById("plan").innerHTML =
+            formatPlan(data.plan);
+
+
+
+        document.getElementById("result").style.display =
+            "block";
+
+
+
+        setTimeout(() => {
+
+            document.getElementById("result")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }, 200);
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not connect to the AI. Make sure Ollama is running."
+        );
+
+    }
+
+
+    finally {
+
+        document.getElementById("loading").style.display =
+            "none";
+
+    }
+
+}
+
+
+
+function formatPlan(text) {
+
+    let lines = text.split("\n");
+    let html = "";
+
+    let inTable = false;
+    let tableRows = [];
+
+    for (let line of lines) {
+
+        line = line.trim();
+
+        if (!line) {
+            continue;
+        }
+
+        // Markdown headings
+        if (line.startsWith("### ")) {
+
+            if (inTable) {
+                html += buildTable(tableRows);
+                tableRows = [];
+                inTable = false;
+            }
+
+            html += `
+                <div class="plan-heading">
+                    <span class="heading-line"></span>
+                    <h3>${escapeHTML(line.substring(4))}</h3>
+                </div>
+            `;
+
+            continue;
+        }
+
+
+        if (line.startsWith("## ")) {
+
+            if (inTable) {
+                html += buildTable(tableRows);
+                tableRows = [];
+                inTable = false;
+            }
+
+            html += `
+                <div class="plan-heading large">
+                    <span class="heading-line"></span>
+                    <h2>${escapeHTML(line.substring(3))}</h2>
+                </div>
+            `;
+
+            continue;
+        }
+
+
+        // Detect Markdown table
+        if (line.startsWith("|")) {
+
+            // Ignore separator row
+            if (line.match(/^\|?\s*:?-+:?\s*\|/)) {
+                continue;
+            }
+
+            inTable = true;
+
+            let cells = line
+                .split("|")
+                .slice(1, -1)
+                .map(cell => cell.trim());
+
+            tableRows.push(cells);
+
+            continue;
+        }
+
+
+        // Explanation / normal text
+        if (inTable) {
+            html += buildTable(tableRows);
+            tableRows = [];
+            inTable = false;
+        }
+
+
+        // Bullet points
+        if (
+            line.startsWith("- ") ||
+            line.startsWith("* ")
+        ) {
+
+            html += `
+                <div class="plan-bullet">
+                    <span>✓</span>
+                    <p>${formatText(line.substring(2))}</p>
+                </div>
+            `;
+
+            continue;
+        }
+
+
+        // Normal paragraph
+        html += `
+            <p class="plan-paragraph">
+                ${formatText(line)}
+            </p>
+        `;
+    }
+
+
+    // Finish remaining table
+    if (inTable) {
+        html += buildTable(tableRows);
+    }
+
+
+    return html;
+}
+
+
+
+function buildTable(rows) {
+
+    if (rows.length < 2) {
+        return "";
+    }
+
+
+    let headers = rows[0];
+
+    let html = `
+        <div class="schedule-wrapper">
+
+            <table class="schedule-table">
+
+                <thead>
+
+                    <tr>
+    `;
+
+
+    headers.forEach(header => {
+
+        html += `
+            <th>${escapeHTML(header)}</th>
+        `;
+
+    });
+
+
+    html += `
+                    </tr>
+
+                </thead>
+
+                <tbody>
+    `;
+
+
+    for (let i = 1; i < rows.length; i++) {
+
+        let row = rows[i];
+
+        if (row.length === 0) {
+            continue;
+        }
+
+
+        let isBreak =
+            row.join(" ").toLowerCase().includes("break");
+
+
+        html += `
+            <tr class="${isBreak ? "break-row" : ""}">
+        `;
+
+
+        row.forEach((cell, index) => {
+
+            let content = escapeHTML(cell);
+
+            // Subject column
+            if (index === 1 && !isBreak) {
+
+                html += `
+                    <td>
+                        <span class="subject-badge">
+                            ${content}
+                        </span>
+                    </td>
+                `;
+
+            }
+
+            // Duration column
+            else if (index === row.length - 1) {
+
+                html += `
+                    <td>
+                        <span class="duration-badge">
+                            ${content}
+                        </span>
+                    </td>
+                `;
+
+            }
+
+            else {
+
+                html += `<td>${content}</td>`;
+
+            }
+
+        });
+
+
+        html += `</tr>`;
+    }
+
+
+    html += `
+                </tbody>
+
+            </table>
+
+        </div>
+    `;
+
+
+    return html;
+}
+
+
+
+function formatText(text) {
+
+    return escapeHTML(text)
+        .replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+}
+
+
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
